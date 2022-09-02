@@ -43,7 +43,7 @@ const anotherEmployee = () => {
   return inquirer.prompt([
     {
       type: "list",
-      message: "Would you like to add an employee?",
+      message: "add an employee?",
       choices: [
         "Engineer",
         "Intern",
