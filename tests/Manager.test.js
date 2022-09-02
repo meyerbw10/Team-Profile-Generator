@@ -1,4 +1,4 @@
-const Manager = require("../classes/Manager.js")
+const Manager = require("../lib/Manager.js")
 
 test('Can we get managers office nummber', () => {
   const officeNumber = 300

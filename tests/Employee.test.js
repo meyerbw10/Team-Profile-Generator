@@ -1,4 +1,4 @@
-const Employee = require('../classes/Employee')
+const Employee = require('../lib/Employee')
 
 
 test('Can get the Employee name', () => {
