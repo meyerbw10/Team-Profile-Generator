@@ -31,6 +31,8 @@ Link to deployed website: https://github.com/meyerbw10/Team-Profile-Generator
 ### Usage
 DEMO VIDEO:
 
+https://www.youtube.com/watch?v=THdh8gBNOcc
+
 
 ---
 
