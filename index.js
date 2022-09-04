@@ -1,59 +1,69 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
+const generateHtml = require("./utils/generateHtml")
 
+//-----------------------------------------------------//
+
+const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager")
 
+//-----------------------------------------------------//
+
 const employeeBucket = []
+
+//-----------------------------------------------------//
 
 const init = () => {
   return inquirer.prompt([
     {
       type: "input",
-      message: "Enter Manager Name",
+      message: "Enter Manager's Name.",
       name: "managerName",
     },
     {
       type: "input",
-      message: "Enter Manager ID",
+      message: "Enter Manager's ID.",
       name: "managerId"
     },
     {
       type: "input",
-      message: "Enter Manager Email",
+      message: "Enter Manager's Email.",
       name: "managerEmail"
     },
     {
       type: "input",
-      message: "Enter Manager Office Number",
-      name: "managerOfficeNumber"
+      message: "Enter Manager's Office Number.",
+      name: "officeNumber"
     },
   ]).then((t) => {
     console.log(t);
-    const { managerName, managerId, managerEmail, managerOfficeNumber } = t
-    const manager = new Manager(managerName, managerId, managerEmail, managerOfficeNumber)
+    const { managerName, managerId, managerEmail, officeNumber } = t
+    const manager = new Manager(managerName, managerId, managerEmail, officeNumber)
     employeeBucket.push(manager)
-    console.log(employeeBucket);
     anotherEmployee()
   })
 }
+
+//-----------------------------------------------------//
+
 const anotherEmployee = () => {
 
   return inquirer.prompt([
     {
       type: "list",
-      message: "add an employee?",
+      message: "Add another Employee?",
       choices: [
         "Engineer",
         "Intern",
-        "No, I'm finished"
+        "Finish"
       ],
       name: "employeeAdd",
 
     }
   ]).then((newCase) => {
-    // console.log(employeeBucket)
+    console.log(employeeBucket)
     switch (newCase.employeeAdd) {
       case "Engineer":
         addEngineer()
@@ -61,47 +71,93 @@ const anotherEmployee = () => {
       case "Intern":
         addIntern()
         break;
-      case "No, I'm finished":
-        pushNewEmployee()
+      case "Finish":
+        pushEmployee()
     }
   })
 }
 
-addEngineer() {
+//-----------------------------------------------------//
+
+const addEngineer = () => {
   return inquirer.prompt([
     {
       type: "input",
-      message: "Enter Engineer Name",
+      message: "Enter Engineer Name.",
       name: "engineerName",
     },
     {
       type: "input",
-      message: "Enter Engineer ID",
-      name: "managerId"
+      message: "Enter Engineer ID.",
+      name: "engineerId"
     },
     {
       type: "input",
-      message: "Enter Manager Email",
-      name: "managerEmail"
+      message: "Enter Manager Email.",
+      name: "engineerEmail"
     },
     {
       type: "input",
-      message: "Enter GitHub Username",
-      name: "EngineerUserName"
+      message: "Enter GitHub Username.",
+      name: "engineerGithub"
     }
   ]).then((t) => {
     console.log(t);
-    const { managerName, managerId, managerEmail, managerOfficeNumber } = t
-    const Engineer = new Manager(managerName, managerId, managerEmail, managerOfficeNumber)
-    employeeBucket.push(manager)
-    console.log(employeeBucket);
+    const { engineerName, engineerId, engineerEmail, engineerGithub } = t
+    const engineer = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub)
+    employeeBucket.push(engineer)
+
     anotherEmployee()
 
   })
 }
 
-addIntern()
-//write to file function
+//-----------------------------------------------------//
+
+const addIntern = () => {
+  return inquirer.prompt([
+      {
+          type: "input",
+          message: "Enter Intern's Name.",
+          name: "internName"
+          
+      },
+      {
+          type: "input",
+          message: "Enter intern's Employee ID.",
+          name: "internId"
+          
+      },
+      {
+          type: "input",
+          message: "Enter Intern's Email.",
+          name: "internEmail"
+          
+      },
+      {
+          type: "input",
+          message: "Enter Intern's School.",
+          name: "internSchool"
+          
+      },
+  ]).then((internData) => {
+      const { internName, internId, internEmail, internSchool } = internData
+      const intern = new Intern(internName, internId, internEmail, internSchool)
+      employeeBucket.push(intern)
+
+      anotherEmployee(intern)
+      
+  })
+}
+
+
+//-----------------------------------------------------//
+
+const pushEmployee = () => { 
+  fs.writeFileSync("./dist/index.html", generateHtml(employeeBucket),
+   (err) => err ? console.log("You messed up somewhere.") : console.log("Creation Successful!"))
+  
+}
 
 
 init()

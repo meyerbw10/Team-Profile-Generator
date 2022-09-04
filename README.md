@@ -1,7 +1,6 @@
 # Team-Profile-Generator
 
 
-
 ## Table of Contents
 
 - [Description](#description)
@@ -17,7 +16,7 @@
 
 ## Project Description 
 
-For our 7th Project I wanted to make a ReadMe Generator and through the terminal input specific words and select choices that create an example file and when done already template a new README! My projects are on display via Github, with clickable images as well as my resume in a clickable PDF file. 
+For our 8th Project I wanted to make a Team Profile Generator and through the terminal input Choices and Answers that generate an HTML page of cards with the inputed information. Also intro to tests. My projects are on display via Github, with clickable images as well as my resume in a clickable PDF file. 
 
 ---
 
@@ -25,7 +24,7 @@ For our 7th Project I wanted to make a ReadMe Generator and through the terminal
 
 To view the project, clone the git repository using VS Code. this will allow you to vie the index.html file ass well as the css style file. The website can be view by right clicking in the index.html file and opening via web browser.
 
-Link to deployed website: https://github.com/meyerbw10/Professional-README-Generator
+Link to deployed website: https://github.com/meyerbw10/Team-Profile-Generator 
 
 ---
 
@@ -37,9 +36,9 @@ DEMO VIDEO:
 
 ## User Story
 
-AS A developer
-I WANT a README generator
-SO THAT I can quickly create a professional README for a new project
+AS A manager
+I WANT to generate a webpage that displays my team's basic info
+SO THAT I have quick access to their emails and GitHub profiles
 
 ---
 
@@ -67,7 +66,7 @@ THEN I exit the application, and the HTML is generated
 
 
 ## Change Log
-## v1.0.0
+## v1.4.6
 
 - adding html, css, js and read me files
 - updating Readme
@@ -83,6 +82,8 @@ THEN I exit the application, and the HTML is generated
 
 - Javascript
 - NodeJS
+- Tests
+- HTML
 
 ---
 
